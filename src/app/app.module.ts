@@ -8,6 +8,11 @@ import {MatButtonModule, MatCardModule, MatFormFieldModule, MatInputModule, MatL
 import { AuthComponent } from './pages/auth/auth.component';
 import {FlexModule} from '@angular/flex-layout';
 import {FormsModule} from '@angular/forms';
+import {AuthService} from './services/core/auth.service';
+import {AngularFirestoreModule} from '@angular/fire/firestore';
+import {AngularFireModule} from '@angular/fire';
+import {firebaseConfig} from '../environments/environment';
+import {AngularFireAuth, AngularFireAuthModule} from '@angular/fire/auth';
 
 @NgModule({
   declarations: [
@@ -26,6 +31,9 @@ import {FormsModule} from '@angular/forms';
     MatFormFieldModule,
     MatInputModule,
     FormsModule,
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFirestoreModule,
+    AngularFireAuthModule
   ],
   providers: [],
   bootstrap: [AppComponent]
