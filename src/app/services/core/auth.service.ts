@@ -47,4 +47,15 @@ export class AuthService {
     this.updateUserData(credential.user);
     console.log(credential.user);
   }
+  public signIn(email, password) {
+    return this.fireAuth.auth.signInWithEmailAndPassword(email, password)
+      .then(result => {
+        console.log(result);
+        this.updateUserData(result.user);
+        this.router.navigate(['']);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
 }
