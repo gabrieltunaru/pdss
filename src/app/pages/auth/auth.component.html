@@ -1,10 +1,12 @@
 <div fxLayout="column" class="zero fullScreen" fxLayoutAlign="center center">
   <div fxFlex="33" class="one">
     <mat-card class="auth-card">
-      <mat-card-title>Sign up</mat-card-title>
-      <mat-card-content>
-          <app-signup></app-signup>
-      </mat-card-content>
+        <app-signup *ngIf="!useLoginComponent"></app-signup>
+        <app-signin *ngIf="useLoginComponent"></app-signin>
+      <mat-card-footer>
+        {{useLoginComponent ? 'Don\'t have' : "Already have"}} an account?
+        <button mat-raised-button (click)="switchComponent()"> Click here</button>
+      </mat-card-footer>
     </mat-card>
   </div>
 </div>

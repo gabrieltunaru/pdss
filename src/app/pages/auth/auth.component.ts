@@ -9,10 +9,10 @@ import {AuthService} from '../../services/core/auth.service';
 export class AuthComponent implements OnInit {
 
 
-  private isLogin = false;
-  private credentials: any = {
-    email: '',
-    password: ''
+  private useLoginComponent = false;
+  private messages = {
+    login: 'Don\'t have an account? Click here:',
+    register: 'Already have an account? Click here:'
   };
 
   constructor(public authService: AuthService) {
@@ -21,9 +21,8 @@ export class AuthComponent implements OnInit {
   ngOnInit() {
   }
 
-  login() {
-    console.log(this.credentials);
-    this.authService.signUp(this.credentials.email, this.credentials.password);
+  switchComponent() {
+    this.useLoginComponent = !this.useLoginComponent;
   }
 
 }
