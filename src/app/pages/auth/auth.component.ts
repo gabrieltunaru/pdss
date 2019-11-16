@@ -25,4 +25,8 @@ export class AuthComponent implements OnInit {
     this.useLoginComponent = !this.useLoginComponent;
   }
 
+  googleAuth() {
+    this.authService.googleAuth();
+  }
+
 }

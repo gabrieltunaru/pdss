@@ -5,7 +5,11 @@
         <app-signin *ngIf="useLoginComponent"></app-signin>
       <mat-card-footer>
         {{useLoginComponent ? 'Don\'t have' : "Already have"}} an account?
-        <button mat-raised-button (click)="switchComponent()"> Click here</button>
+        <button mat-button (click)="switchComponent()"> Click here</button>
+        Sign in with
+        <button mat-button (click)="switchComponent()"> Facebook</button>
+        <button mat-button (click)="googleAuth()"> Google</button>
+
       </mat-card-footer>
     </mat-card>
   </div>
