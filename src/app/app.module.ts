@@ -13,11 +13,17 @@ import {AngularFirestoreModule} from '@angular/fire/firestore';
 import {AngularFireModule} from '@angular/fire';
 import {firebaseConfig} from '../environments/environment';
 import {AngularFireAuth, AngularFireAuthModule} from '@angular/fire/auth';
+import { HomeComponent } from './components/home/home.component';
+import { SignupComponent } from './components/signup/signup.component';
+import { SigninComponent } from './components/signin/signin.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AuthComponent
+    AuthComponent,
+    HomeComponent,
+    SignupComponent,
+    SigninComponent
   ],
   imports: [
     BrowserModule,

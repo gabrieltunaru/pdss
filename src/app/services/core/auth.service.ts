@@ -19,6 +19,7 @@ export class AuthService {
     return this.fireAuth.auth.createUserWithEmailAndPassword(email, password)
       .then(result => {
         console.log(result);
+        this.router.navigate(['']);
       })
       .catch(err => {
         console.log(err);

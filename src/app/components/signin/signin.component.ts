@@ -1,15 +1,13 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {AuthService} from '../../services/core/auth.service';
 
 @Component({
-  selector: 'app-auth',
-  templateUrl: './auth.component.html',
-  styleUrls: ['./auth.component.scss']
+  selector: 'app-signin',
+  templateUrl: './signin.component.html',
+  styleUrls: ['./signin.component.scss']
 })
-export class AuthComponent implements OnInit {
+export class SigninComponent implements OnInit {
 
-
-  private isLogin = false;
   private credentials: any = {
     email: '',
     password: ''
@@ -25,5 +23,6 @@ export class AuthComponent implements OnInit {
     console.log(this.credentials);
     this.authService.signUp(this.credentials.email, this.credentials.password);
   }
+
 
 }

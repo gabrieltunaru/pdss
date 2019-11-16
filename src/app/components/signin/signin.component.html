@@ -1,0 +1,14 @@
+<mat-card-content>
+  <form class="example-form">
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Email" [(ngModel)]="credentials.email" name="email">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <input matInput type="password" placeholder="Password" [(ngModel)]="credentials.password" name="password">
+    </mat-form-field>
+  </form>
+  <button mat-raised-button (click)="login()" color="primary">
+    Register
+  </button>
+</mat-card-content>
