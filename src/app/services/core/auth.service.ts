@@ -41,11 +41,16 @@ export class AuthService {
 
   }
 
-  async googleAuth() {
-    const provider = new auth.GoogleAuthProvider();
+  async socialAuth(provider: auth.AuthProvider) {
     const credential = await this.fireAuth.auth.signInWithPopup(provider);
     this.updateUserData(credential.user);
     console.log(credential.user);
+  }
+  async googleAuth() {
+    this.socialAuth(new auth.GoogleAuthProvider());
+  }
+  async facebookAuth() {
+    this.socialAuth(new auth.FacebookAuthProvider());
   }
   public signIn(email, password) {
     return this.fireAuth.auth.signInWithEmailAndPassword(email, password)
