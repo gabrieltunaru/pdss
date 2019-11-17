@@ -4,7 +4,15 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatButtonModule, MatCardModule, MatFormFieldModule, MatInputModule, MatListModule, MatMenuModule} from '@angular/material';
+import {
+  MatButtonModule,
+  MatCardModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatListModule,
+  MatMenuModule,
+  MatToolbarModule
+} from '@angular/material';
 import { AuthComponent } from './pages/auth/auth.component';
 import {FlexModule} from '@angular/flex-layout';
 import {FormsModule} from '@angular/forms';
@@ -16,6 +24,7 @@ import {AngularFireAuth, AngularFireAuthModule} from '@angular/fire/auth';
 import { HomeComponent } from './components/home/home.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { SigninComponent } from './components/signin/signin.component';
+import { MenuComponent } from './components/menu/menu.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +32,8 @@ import { SigninComponent } from './components/signin/signin.component';
     AuthComponent,
     HomeComponent,
     SignupComponent,
-    SigninComponent
+    SigninComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +49,8 @@ import { SigninComponent } from './components/signin/signin.component';
     FormsModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFirestoreModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    MatToolbarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

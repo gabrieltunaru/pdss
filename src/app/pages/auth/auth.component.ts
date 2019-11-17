@@ -9,11 +9,8 @@ import {AuthService} from '../../services/core/auth.service';
 export class AuthComponent implements OnInit {
 
 
-  private useLoginComponent = false;
-  private messages = {
-    login: 'Don\'t have an account? Click here:',
-    register: 'Already have an account? Click here:'
-  };
+  public useLoginComponent = false;
+
 
   constructor(public authService: AuthService) {
   }

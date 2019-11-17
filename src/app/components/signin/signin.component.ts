@@ -8,7 +8,7 @@ import {AuthService} from '../../services/core/auth.service';
 })
 export class SigninComponent implements OnInit {
 
-  private credentials: any = {
+  public credentials: any = {
     email: '',
     password: ''
   };

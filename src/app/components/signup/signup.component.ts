@@ -9,7 +9,7 @@ import {Router} from '@angular/router';
 })
 export class SignupComponent implements OnInit {
 
-  private credentials: any = {
+  public credentials: any = {
     email: '',
     password: '',
     password2: '',
