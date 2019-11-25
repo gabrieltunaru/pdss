@@ -25,8 +25,7 @@ export class AuthComponent implements OnInit {
   googleAuth() {
     this.authService.googleAuth();
   }
-  facebookAuth()
-  {
+  facebookAuth() {
     this.authService.facebookAuth();
   }
 

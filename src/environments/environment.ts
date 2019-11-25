@@ -5,6 +5,16 @@
 export const environment = {
   production: false
 };
+export const firebaseConfig = {
+  apiKey: 'AIzaSyBDclZWE--3g2EESX9iSrsrJZNXGJZk7oY',
+  authDomain: 'pdss-9e4b0.firebaseapp.com',
+  databaseURL: 'https://pdss-9e4b0.firebaseio.com',
+  projectId: 'pdss-9e4b0',
+  storageBucket: 'pdss-9e4b0.appspot.com',
+  messagingSenderId: '194381522298',
+  appId: '1:194381522298:web:7f1800a4b1f2afe48d62c3',
+  measurementId: 'G-1PDKKFYBSZ'
+};
 
 /*
  * For easier debugging in development mode, you can import the following file

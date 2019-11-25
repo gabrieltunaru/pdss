@@ -25,6 +25,8 @@ import { HomeComponent } from './components/home/home.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { SigninComponent } from './components/signin/signin.component';
 import { MenuComponent } from './components/menu/menu.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import {ImageCropperModule} from 'ngx-image-cropper';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,8 @@ import { MenuComponent } from './components/menu/menu.component';
     HomeComponent,
     SignupComponent,
     SigninComponent,
-    MenuComponent
+    MenuComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +53,8 @@ import { MenuComponent } from './components/menu/menu.component';
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFirestoreModule,
     AngularFireAuthModule,
-    MatToolbarModule
+    MatToolbarModule,
+    ImageCropperModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
