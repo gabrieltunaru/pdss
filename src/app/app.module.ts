@@ -1,19 +1,19 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {AppRoutingModule} from './app-routing.module';
+import {AppComponent} from './app.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {
   MatButtonModule,
   MatCardModule,
   MatFormFieldModule,
   MatInputModule,
   MatListModule,
-  MatMenuModule,
+  MatMenuModule, MatSelectModule,
   MatToolbarModule
 } from '@angular/material';
-import { AuthComponent } from './pages/auth/auth.component';
+import {AuthComponent} from './pages/auth/auth.component';
 import {FlexModule} from '@angular/flex-layout';
 import {FormsModule} from '@angular/forms';
 import {AuthService} from './services/core/auth.service';
@@ -21,12 +21,15 @@ import {AngularFirestoreModule} from '@angular/fire/firestore';
 import {AngularFireModule} from '@angular/fire';
 import {firebaseConfig} from '../environments/environment';
 import {AngularFireAuth, AngularFireAuthModule} from '@angular/fire/auth';
-import { HomeComponent } from './components/home/home.component';
-import { SignupComponent } from './components/signup/signup.component';
-import { SigninComponent } from './components/signin/signin.component';
-import { MenuComponent } from './components/menu/menu.component';
-import { ProfileComponent } from './components/profile/profile.component';
+import {HomeComponent} from './components/home/home.component';
+import {SignupComponent} from './components/signup/signup.component';
+import {SigninComponent} from './components/signin/signin.component';
+import {MenuComponent} from './components/menu/menu.component';
+import {ProfileComponent} from './components/profile/profile.component';
 import {ImageCropperModule} from 'ngx-image-cropper';
+import {ElectionsComponent} from './pages/elections/elections.component';
+import {ElectionCreateComponent} from './pages/election-create/election-create.component';
+import { ElectionsAdminComponent } from './pages/elections-admin/elections-admin.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +39,10 @@ import {ImageCropperModule} from 'ngx-image-cropper';
     SignupComponent,
     SigninComponent,
     MenuComponent,
-    ProfileComponent
+    ProfileComponent,
+    ElectionsComponent,
+    ElectionCreateComponent,
+    ElectionsAdminComponent
   ],
   imports: [
     BrowserModule,
@@ -55,8 +61,10 @@ import {ImageCropperModule} from 'ngx-image-cropper';
     AngularFireAuthModule,
     MatToolbarModule,
     ImageCropperModule,
+    MatSelectModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
