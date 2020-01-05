@@ -30,6 +30,7 @@ import {ImageCropperModule} from 'ngx-image-cropper';
 import {ElectionsComponent} from './pages/elections/elections.component';
 import {ElectionCreateComponent} from './pages/election-create/election-create.component';
 import { ElectionsAdminComponent } from './pages/elections-admin/elections-admin.component';
+import { ElectionComponent } from './components/election/election.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { ElectionsAdminComponent } from './pages/elections-admin/elections-admin
     ProfileComponent,
     ElectionsComponent,
     ElectionCreateComponent,
-    ElectionsAdminComponent
+    ElectionsAdminComponent,
+    ElectionComponent
   ],
   imports: [
     BrowserModule,

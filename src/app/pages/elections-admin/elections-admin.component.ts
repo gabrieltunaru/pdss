@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {ElectionsService} from '../../services/elections.service';
+import {Election} from '../../models/Election';
 
 @Component({
   selector: 'app-elections-admin',
@@ -7,9 +9,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ElectionsAdminComponent implements OnInit {
 
-  constructor() { }
+  public elections: Election[];
+
+  constructor(private electionsService: ElectionsService) {
+    electionsService.getElections()
+      .subscribe(snapshot => {
+          this.elections = snapshot.docs.map(doc => {
+            const data = doc.data();
+            const id = doc.id;
+            return {...data, id} as Election;
+          });
+        }
+      );
+  }
 
   ngOnInit() {
+  }
+
+  onClick() {
+    console.log(this.elections);
   }
 
 }

@@ -1,0 +1,15 @@
+<mat-card class="election">
+  <mat-card-title>
+    {{election.title}}
+  </mat-card-title>
+  <mat-card-content>
+    <p>{{election.description}}</p>
+    <p>{{election.candidates.length}} candidates</p>
+  </mat-card-content>
+  <mat-card-footer>
+    <button mat-raised-button (click)="switchActive()"
+            [color]="election.isActive? 'warn':'primary'">{{election.isActive ? "Close" : "Open"}}
+      election
+    </button>
+  </mat-card-footer>
+</mat-card>

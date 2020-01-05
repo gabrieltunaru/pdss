@@ -1,1 +1,5 @@
-<p>elections-admin works!</p>
+<div fxLayout="row wrap" fxLayoutGap="30px grid" fxLayoutAlign="center" class="container">
+  <div *ngFor="let election of elections">
+    <app-election [election]="election"></app-election>
+  </div>
+</div>

@@ -19,4 +19,13 @@ export class ElectionsService {
     this.elections.add(election);
   }
 
+  public getElections() {
+    return this.elections.get();
+  }
+
+  public switchActive(election: Election) {
+    this.elections.doc(election.id).update({isActive: election.isActive});
+    // this.elections.doc(election.id).get().subscribe(el => console.log(el.data()));
+  }
+
 }

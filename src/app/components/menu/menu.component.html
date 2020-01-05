@@ -3,7 +3,8 @@
     <button mat-button routerLink="/">Home</button>
     <button mat-button routerLink="/profile" *ngIf="authService.isLoggedIn" >Profile</button>
     <button mat-button routerLink="/auth" *ngIf="!authService.isLoggedIn">Authenticate</button>
-    <button mat-button routerLink="/create-election" *ngIf="authService.isLoggedIn">Create Election</button>
+    <button mat-button routerLink="/create-election" >Create election</button>
+    <button mat-button routerLink="/administrate-elections" >Administrate elections</button>
     <button mat-button routerLink="/auth" *ngIf="authService.isLoggedIn" (click)="authService.signOut()">Sign out</button>
 
   </mat-toolbar-row>
