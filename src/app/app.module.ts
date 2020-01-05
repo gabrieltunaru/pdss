@@ -27,6 +27,7 @@ import { SigninComponent } from './components/signin/signin.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import {ImageCropperModule} from 'ngx-image-cropper';
+import { AngularFireStorageModule} from '@angular/fire/storage';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,7 @@ import {ImageCropperModule} from 'ngx-image-cropper';
     SignupComponent,
     SigninComponent,
     MenuComponent,
-    ProfileComponent
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -55,6 +56,7 @@ import {ImageCropperModule} from 'ngx-image-cropper';
     AngularFireAuthModule,
     MatToolbarModule,
     ImageCropperModule,
+    AngularFireStorageModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
