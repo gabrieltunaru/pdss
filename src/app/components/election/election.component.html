@@ -4,7 +4,8 @@
   </mat-card-title>
   <mat-card-content>
     <p>{{election.description}}</p>
-    <p>{{election.candidates.length}} candidates</p>
+    <p *ngIf="!election.isReferendum">{{election.candidates.length}} candidates</p>
+    <p *ngIf="election.isReferendum">Referendum</p>
   </mat-card-content>
   <mat-card-footer>
     <button mat-raised-button (click)="switchActive()"

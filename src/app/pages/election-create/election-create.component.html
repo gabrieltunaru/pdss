@@ -17,6 +17,7 @@
         <mat-form-field class="example-full-width">
           <input matInput placeholder="Description" [(ngModel)]="election.description">
         </mat-form-field>
+        <mat-slide-toggle [(ngModel)]="election.isReferendum">Is referendum?</mat-slide-toggle>
       </mat-card-content>
       <mat-card-footer>
         <button mat-button (click)="create()"> Create</button>

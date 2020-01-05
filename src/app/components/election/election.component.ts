@@ -19,6 +19,9 @@ export class ElectionComponent implements OnInit {
   }
 
   public switchActive() {
+    if (!this.election.isClosed && this.election.isActive) {
+      this.election.isClosed = true;
+    }
     this.election.isActive = !this.election.isActive;
     this.electionsService.switchActive(this.election);
   }

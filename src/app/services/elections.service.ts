@@ -24,7 +24,7 @@ export class ElectionsService {
   }
 
   public switchActive(election: Election) {
-    this.elections.doc(election.id).update({isActive: election.isActive});
+    this.elections.doc(election.id).update({isActive: election.isActive, isClosed: election.isClosed});
     // this.elections.doc(election.id).get().subscribe(el => console.log(el.data()));
   }
 

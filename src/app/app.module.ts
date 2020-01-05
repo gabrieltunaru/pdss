@@ -10,7 +10,7 @@ import {
   MatFormFieldModule,
   MatInputModule,
   MatListModule,
-  MatMenuModule, MatSelectModule,
+  MatMenuModule, MatSelectModule, MatSlideToggleModule,
   MatToolbarModule
 } from '@angular/material';
 import {AuthComponent} from './pages/auth/auth.component';
@@ -64,6 +64,7 @@ import { ElectionComponent } from './components/election/election.component';
     MatToolbarModule,
     ImageCropperModule,
     MatSelectModule,
+    MatSlideToggleModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

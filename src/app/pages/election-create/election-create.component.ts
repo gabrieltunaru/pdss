@@ -10,7 +10,7 @@ import {User} from '../../models/User';
 })
 export class ElectionCreateComponent implements OnInit {
 
-  public election = {type: 'election', title: '', description: ''};
+  public election = {type: 'election', title: '', description: '', isReferendum: false};
 
   constructor(private electionsService: ElectionsService) {
   }
@@ -20,8 +20,7 @@ export class ElectionCreateComponent implements OnInit {
 
   create() {
     const election: Election = {
-      title: this.election.title,
-      description: this.election.description,
+      ...this.election,
       isActive: false,
       isClosed: false,
       candidates: []
