@@ -20,7 +20,6 @@ export class SigninComponent implements OnInit {
   }
 
   login() {
-    console.log(this.credentials);
     this.authService.signIn(this.credentials.email, this.credentials.password);
   }
 

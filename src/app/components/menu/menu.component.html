@@ -1,11 +1,12 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row>
     <button mat-button routerLink="/">Home</button>
-    <button mat-button routerLink="/profile" *ngIf="authService.isLoggedIn">Profile</button>
-    <button mat-button routerLink="/auth" *ngIf="!authService.isLoggedIn">Authenticate</button>
+    <button mat-button routerLink="/profile" *ngIf="isLoggedIn">Profile</button>
+    <button mat-button routerLink="/auth" *ngIf="!isLoggedIn">Authenticate</button>
     <button mat-button routerLink="/create-election" >Create election</button>
     <button mat-button routerLink="/administrate-elections" >Administrate elections</button>
-    <button mat-button routerLink="/auth" *ngIf="authService.isLoggedIn" (click)="authService.signOut()">Sign out</button>
+    <button mat-button routerLink="/candidate" >Candidate</button>
+    <button mat-button routerLink="/auth" *ngIf="isLoggedIn" (click)="authService.signOut()">Sign out</button>
 
   </mat-toolbar-row>
 </mat-toolbar>

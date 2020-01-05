@@ -3,6 +3,7 @@ import {AngularFireDatabase} from '@angular/fire/database';
 import {FirebaseListObservable} from '@angular/fire/database-deprecated';
 import {Election} from '../models/Election';
 import {AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument} from '@angular/fire/firestore';
+import {User} from '../models/User';
 
 @Injectable({
   providedIn: 'root'
@@ -26,6 +27,11 @@ export class ElectionsService {
   public switchActive(election: Election) {
     this.elections.doc(election.id).update({isActive: election.isActive, isClosed: election.isClosed});
     // this.elections.doc(election.id).get().subscribe(el => console.log(el.data()));
+  }
+
+  public addUserToElection(user: User, election: Election) {
+    election.candidates.push({user, votes: 0});
+    this.elections.doc(election.id).update(({candidates: election.candidates}));
   }
 
 }

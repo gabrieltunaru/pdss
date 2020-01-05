@@ -14,6 +14,7 @@ import {ProfileService} from './profile.service';
 })
 export class AuthService {
   public isLoggedIn = false;
+
   constructor(public fireStore: AngularFirestore,
               public fireAuth: AngularFireAuth,
               public router: Router,
@@ -24,14 +25,12 @@ export class AuthService {
   public signUp(email, password) {
     return this.fireAuth.auth.createUserWithEmailAndPassword(email, password)
       .then(result => {
-        console.log(result);
         this.router.navigate(['']);
       })
       .catch(err => {
-        console.log(err);
+        console.error(err);
       });
   }
-
 
 
   async socialAuth(provider: auth.AuthProvider) {
@@ -39,7 +38,6 @@ export class AuthService {
     this.profileService.updateIfExists(credential.user);
     this.isLoggedIn = true;
     this.router.navigate(['']);
-    console.log(credential.user);
   }
 
   async googleAuth() {
@@ -53,16 +51,14 @@ export class AuthService {
   public signIn(email, password) {
     return this.fireAuth.auth.signInWithEmailAndPassword(email, password)
       .then(result => {
-        console.log(result);
         this.profileService.updateIfExists(result.user);
         this.isLoggedIn = true;
         this.router.navigate(['']);
       })
       .catch(err => {
-        console.log(err);
+        console.error(err);
       });
   }
-
 
 
   public signOut() {
@@ -70,8 +66,16 @@ export class AuthService {
 
     this.fireAuth.auth.signOut();
     this.isLoggedIn = false;
-    console.log(this.fireAuth.user);
+    localStorage.clear();
+    window.location.reload();
 
     // userRef.delete();
+  }
+
+  public getCurrentUser() {
+
+    const uid = localStorage.getItem('user');
+    const userRef: AngularFirestoreDocument<any> = this.fireStore.doc(`users/${uid}`);
+    return userRef.get();
   }
 }

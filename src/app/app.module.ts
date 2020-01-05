@@ -32,6 +32,7 @@ import {ElectionsComponent} from './pages/elections/elections.component';
 import {ElectionCreateComponent} from './pages/election-create/election-create.component';
 import { ElectionsAdminComponent } from './pages/elections-admin/elections-admin.component';
 import { ElectionComponent } from './components/election/election.component';
+import { CandidatePageComponent } from './pages/candidate-page/candidate-page.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { ElectionComponent } from './components/election/election.component';
     ElectionsComponent,
     ElectionCreateComponent,
     ElectionsAdminComponent,
-    ElectionComponent
+    ElectionComponent,
+    CandidatePageComponent
   ],
   imports: [
     BrowserModule,

@@ -40,19 +40,18 @@ export class ProfileService {
       photoURL: user.photoURL,
       isAdmin: user.isAdmin || false
     };
-    localStorage.setItem('user', user.uid);
     return userRef.set(data, {merge: true});
 
   }
 
   public updateIfExists(user) {
+    localStorage.setItem('user', user.uid);
     const userRef: AngularFirestoreDocument<any> = this.fireStore.doc(`users/${user.uid}`);
     if (userRef.get().subscribe(data => {
-      console.log(data);
       if (!data.exists) {
         this.updateUserData(user);
       }
-
+      window.location.reload();
     })) {
 
     }

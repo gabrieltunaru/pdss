@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {AuthService} from '../../services/core/auth.service';
 
 @Component({
@@ -8,7 +8,12 @@ import {AuthService} from '../../services/core/auth.service';
 })
 export class MenuComponent implements OnInit {
 
-  constructor(public authService: AuthService) { }
+  public isLoggedIn = false;
+
+  constructor(public authService: AuthService) {
+    const userId = localStorage.getItem('user');
+    this.isLoggedIn = !!userId;
+  }
 
   ngOnInit() {
   }

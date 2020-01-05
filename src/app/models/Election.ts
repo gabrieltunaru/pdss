@@ -1,4 +1,4 @@
-import {User} from './User';
+import {Candidate} from './Candidate';
 
 export interface Election {
   id?: string;
@@ -7,9 +7,10 @@ export interface Election {
   no?: boolean;
   title: string;
   description: string;
-  candidates?: User[];
+  candidates?: Candidate[];
   isActive: boolean;
   isClosed: boolean;
   // stopDate: Date;
 }
+
 

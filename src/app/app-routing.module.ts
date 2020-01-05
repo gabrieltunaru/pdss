@@ -6,6 +6,7 @@ import {AuthComponent} from './pages/auth/auth.component';
 import {ProfileComponent} from './components/profile/profile.component';
 import {ElectionCreateComponent} from './pages/election-create/election-create.component';
 import {ElectionsAdminComponent} from './pages/elections-admin/elections-admin.component';
+import {CandidatePageComponent} from './pages/candidate-page/candidate-page.component';
 
 
 const routes: Routes = [
@@ -15,6 +16,7 @@ const routes: Routes = [
   {path: 'profile', component : ProfileComponent},
   {path: 'create-election', component : ElectionCreateComponent},
   {path: 'administrate-elections', component : ElectionsAdminComponent},
+  {path: 'candidate', component:CandidatePageComponent}
 ];
 
 @NgModule({

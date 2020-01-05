@@ -27,7 +27,6 @@ export class ElectionsAdminComponent implements OnInit {
   }
 
   onClick() {
-    console.log(this.elections);
   }
 
 }
