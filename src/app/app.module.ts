@@ -27,6 +27,7 @@ import {SigninComponent} from './components/signin/signin.component';
 import {MenuComponent} from './components/menu/menu.component';
 import {ProfileComponent} from './components/profile/profile.component';
 import {ImageCropperModule} from 'ngx-image-cropper';
+import { AngularFireStorageModule} from '@angular/fire/storage';
 import {ElectionsComponent} from './pages/elections/elections.component';
 import {ElectionCreateComponent} from './pages/election-create/election-create.component';
 import { ElectionsAdminComponent } from './pages/elections-admin/elections-admin.component';
@@ -40,6 +41,7 @@ import { ElectionComponent } from './components/election/election.component';
     SignupComponent,
     SigninComponent,
     MenuComponent,
+    ProfileComponent,
     ProfileComponent,
     ElectionsComponent,
     ElectionCreateComponent,
@@ -63,6 +65,7 @@ import { ElectionComponent } from './components/election/election.component';
     AngularFireAuthModule,
     MatToolbarModule,
     ImageCropperModule,
+    AngularFireStorageModule,
     MatSelectModule,
     MatSlideToggleModule,
   ],

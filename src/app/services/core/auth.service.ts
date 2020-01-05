@@ -3,21 +3,22 @@ import {Router} from '@angular/router';
 import {AngularFireAuth} from '@angular/fire/auth';
 import {AngularFirestore, AngularFirestoreDocument} from '@angular/fire/firestore';
 import {auth} from 'firebase';
-import {first} from 'rxjs/operators';
+import {first, switchMap} from 'rxjs/operators';
+import {Observable, of} from 'rxjs';
+import {User} from '../../models/User';
+import {ProfileService} from './profile.service';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-
-  private currentUser;
   public isLoggedIn = false;
-
-
   constructor(public fireStore: AngularFirestore,
               public fireAuth: AngularFireAuth,
               public router: Router,
-              public ngZone: NgZone) {
+              public ngZone: NgZone,
+              public profileService: ProfileService) {
   }
 
   public signUp(email, password) {
@@ -31,23 +32,11 @@ export class AuthService {
       });
   }
 
-  private updateUserData(user) {
-    const userRef: AngularFirestoreDocument<any> = this.fireStore.doc(`users/${user.uid}`);
 
-    const data = {
-      uid: user.uid,
-      email: user.email,
-      displayName: user.displayName,
-      photoURL: user.photoURL
-    };
-
-    return userRef.set(data, {merge: true});
-
-  }
 
   async socialAuth(provider: auth.AuthProvider) {
     const credential = await this.fireAuth.auth.signInWithPopup(provider);
-    this.updateUserData(credential.user);
+    this.profileService.updateIfExists(credential.user);
     this.isLoggedIn = true;
     this.router.navigate(['']);
     console.log(credential.user);
@@ -65,7 +54,7 @@ export class AuthService {
     return this.fireAuth.auth.signInWithEmailAndPassword(email, password)
       .then(result => {
         console.log(result);
-        this.updateUserData(result.user);
+        this.profileService.updateIfExists(result.user);
         this.isLoggedIn = true;
         this.router.navigate(['']);
       })
@@ -74,9 +63,7 @@ export class AuthService {
       });
   }
 
-  public getCurrentUser() {
-    return this.fireAuth.user;
-  }
+
 
   public signOut() {
     // const userRef: AngularFirestoreDocument<any> = this.fireStore.doc(`users/${user.uid}`);
