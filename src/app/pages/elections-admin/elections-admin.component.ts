@@ -13,12 +13,8 @@ export class ElectionsAdminComponent implements OnInit {
 
   constructor(private electionsService: ElectionsService) {
     electionsService.getElections()
-      .subscribe(snapshot => {
-          this.elections = snapshot.docs.map(doc => {
-            const data = doc.data();
-            const id = doc.id;
-            return {...data, id} as Election;
-          });
+      .subscribe(elections => {
+          this.elections = elections;
         }
       );
   }

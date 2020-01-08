@@ -24,7 +24,18 @@ export class ElectionsService {
   }
 
   public getElections() {
-    return this.elections.get();
+    return new Observable<Election[]>(subscriber => {
+        this.elections.get().subscribe(snapshot => {
+          subscriber.next(snapshot.docs
+            .map(doc => {
+              const data = doc.data();
+              const id = doc.id;
+              return {...data, id} as Election;
+            }));
+          subscriber.complete();
+        });
+      }
+    );
   }
 
   public switchActive(election: Election) {

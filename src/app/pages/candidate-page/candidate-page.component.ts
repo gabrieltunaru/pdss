@@ -17,12 +17,8 @@ export class CandidatePageComponent implements OnInit {
   constructor(private electionsService: ElectionsService,
               private authService: AuthService) {
     electionsService.getElections()
-      .subscribe(snapshot => {
-          this.elections = snapshot.docs.filter(election => !election.data().isClosed).map(doc => {
-            const data = doc.data();
-            const id = doc.id;
-            return {...data, id} as Election;
-          });
+      .subscribe(elections => {
+          this.elections = elections.filter(election => !election.isClosed);
         }
       );
     authService.getCurrentUser().subscribe(snapshot => {
