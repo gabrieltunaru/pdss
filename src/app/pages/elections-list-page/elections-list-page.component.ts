@@ -16,7 +16,8 @@ export class ElectionsListPageComponent implements OnInit {
               private router: Router) {
     electionsService.getElections()
       .subscribe(snapshot => {
-          this.elections = snapshot.docs.map(doc => {
+          this.elections = snapshot.docs
+            .map(doc => {
             const data = doc.data();
             const id = doc.id;
             return {...data, id} as Election;

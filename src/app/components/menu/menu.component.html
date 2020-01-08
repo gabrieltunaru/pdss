@@ -1,15 +1,20 @@
 <mat-toolbar color="primary" class="menu">
-  <mat-toolbar-row>
-    <button mat-button routerLink="/">Home</button>
-    <button mat-button routerLink="/profile" *ngIf="isLoggedIn">Profile</button>
-    <button mat-button routerLink="/elections">Vote</button>
-    <button mat-button routerLink="/auth" *ngIf="!isLoggedIn">Authenticate</button>
-    <div id="admin" *ngIf="isLoggedIn&&user.isAdmin">
-      <button mat-button routerLink="/create-election">Create election</button>
-      <button mat-button routerLink="/administrate-elections">Administrate elections</button>
-      <button mat-button routerLink="/candidate">Candidate</button>
+  <mat-toolbar-row fxLayoutAlign="space-between">
+    <div fxLayout="row">
+      <button mat-button routerLink="/">Home</button>
+      <!--    <div *ngIf="isLoggedIn">-->
+      <button mat-button routerLink="/elections" *ngIf="isLoggedIn">Vote</button>
+      <div id="admin" *ngIf="isLoggedIn&&user.isAdmin" fxLayout="row">
+        <button mat-button routerLink="/create-election">Create election</button>
+        <button mat-button routerLink="/administrate-elections">Administrate elections</button>
+        <button mat-button routerLink="/candidate">Candidate</button>
+      </div>
     </div>
-    <button mat-button routerLink="/auth" *ngIf="isLoggedIn" (click)="authService.signOut()">Sign out</button>
-
+    <div fxLayout="row">
+      <button mat-button routerLink="/auth" *ngIf="isLoggedIn" (click)="authService.signOut()">Sign out</button>
+      <button mat-button routerLink="/profile" *ngIf="isLoggedIn">Profile</button>
+      <button mat-button routerLink="/auth" *ngIf="!isLoggedIn">Authenticate</button>
+    </div>
+    <!--    </div>-->
   </mat-toolbar-row>
 </mat-toolbar>

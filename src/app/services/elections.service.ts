@@ -46,10 +46,16 @@ export class ElectionsService {
   }
 
   public vote(election: Election) {
-    this.elections.doc(election.id).update({candidates: election.candidates});
+    let changes = {};
+    if (election.isReferendum) {
+      changes = {candidates: election.candidates};
+    } else {
+      changes = {yes: election.yes, no: election.no};
+    }
+    this.elections.doc(election.id).update(changes);
     this.authService.getCurrentUser().subscribe(ss => {
       const user = ss.data() as User;
-      console.log('user',user);
+      console.log('user', user);
       user.electionsVotedIn.push(election.id);
       this.profileService.updateUserData(user);
     });

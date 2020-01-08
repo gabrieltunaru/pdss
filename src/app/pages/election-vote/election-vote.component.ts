@@ -28,7 +28,6 @@ export class ElectionVoteComponent implements OnInit {
         const user = ss.data() as User;
         if (user.electionsVotedIn) {
           this.alreadyVoted = !!user.electionsVotedIn.find(electionId => electionId === this.election.id);
-          console.log
         }
       });
     });
@@ -44,6 +43,11 @@ export class ElectionVoteComponent implements OnInit {
         electionCandidate.votes++;
       }
     });
+    this.electionService.vote(this.election);
+  }
+
+  public voteReferendum(option) {
+    this.election[option]++;
     this.electionService.vote(this.election);
   }
 
