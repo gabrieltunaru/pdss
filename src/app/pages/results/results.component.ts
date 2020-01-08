@@ -4,11 +4,11 @@ import {ElectionsService} from '../../services/elections.service';
 import {Router} from '@angular/router';
 
 @Component({
-  selector: 'app-elections-list-page',
-  templateUrl: './elections-list-page.component.html',
-  styleUrls: ['./elections-list-page.component.scss']
+  selector: 'app-results',
+  templateUrl: './results.component.html',
+  styleUrls: ['./results.component.scss']
 })
-export class ElectionsListPageComponent implements OnInit {
+export class ResultsComponent implements OnInit {
 
   public elections: Election[];
 
@@ -16,7 +16,7 @@ export class ElectionsListPageComponent implements OnInit {
               private router: Router) {
     electionsService.getElections()
       .subscribe(elections => {
-          this.elections = elections.filter(election => election.isActive);
+          this.elections = elections.filter(election => election.isClosed);
         }
       );
   }
@@ -27,5 +27,4 @@ export class ElectionsListPageComponent implements OnInit {
   goToElection(election: Election) {
     this.router.navigate(['election', election.id], {state: {election}});
   }
-
 }

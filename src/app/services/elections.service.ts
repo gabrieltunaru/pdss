@@ -58,7 +58,7 @@ export class ElectionsService {
 
   public vote(election: Election) {
     let changes = {};
-    if (election.isReferendum) {
+    if (!election.isReferendum) {
       changes = {candidates: election.candidates};
     } else {
       changes = {yes: election.yes, no: election.no};

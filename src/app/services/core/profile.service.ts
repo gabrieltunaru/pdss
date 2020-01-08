@@ -49,13 +49,11 @@ export class ProfileService {
   public updateIfExists(user) {
     localStorage.setItem('user', user.uid);
     const userRef: AngularFirestoreDocument<any> = this.fireStore.doc(`users/${user.uid}`);
-    if (userRef.get().subscribe(data => {
+    userRef.get().subscribe(data => {
       if (!data.exists) {
         this.updateUserData(user);
       }
       window.location.reload();
-    })) {
-
-    }
+    });
   }
 }

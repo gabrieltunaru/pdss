@@ -15,6 +15,7 @@ export class ElectionVoteComponent implements OnInit {
 
   public election: Election = {} as Election;
   public alreadyVoted = false;
+  public totalVotes = 0;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -24,6 +25,11 @@ export class ElectionVoteComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get('id');
     this.electionService.getElection(id).subscribe(election => {
       this.election = election as Election;
+      this.totalVotes = this.election.candidates.map(candidate => candidate.votes).reduce((acc, cur) => acc + cur);
+      console.log(this.totalVotes);
+      if (this.election.isClosed) {
+        this.election.candidates.sort((a, b) => a.votes - b.votes);
+      }
       this.authService.getCurrentUser().subscribe(ss => {
         const user = ss.data() as User;
         if (user.electionsVotedIn) {

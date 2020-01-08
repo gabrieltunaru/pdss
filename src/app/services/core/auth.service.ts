@@ -25,6 +25,7 @@ export class AuthService {
   public signUp(email, password) {
     return this.fireAuth.auth.createUserWithEmailAndPassword(email, password)
       .then(result => {
+        this.profileService.updateIfExists(result.user);
         this.router.navigate(['']);
       })
       .catch(err => {

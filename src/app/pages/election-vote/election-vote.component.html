@@ -7,9 +7,10 @@
         <img [src]="candidate.user.photoURL" class="image">
         <div>
           <h4>{{candidate.user.displayName}}</h4>
-          <button mat-raised-button color="primary" (click)="vote(candidate)" [disabled]="alreadyVoted">
+          <button mat-raised-button color="primary" (click)="vote(candidate)" [disabled]="alreadyVoted" *ngIf="!election.isClosed">
             Vote
           </button>
+          <div *ngIf="election.isClosed">{{candidate.votes/totalVotes*100}}%</div>
         </div>
       </div>
     </div>
