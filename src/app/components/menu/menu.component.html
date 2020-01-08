@@ -1,11 +1,14 @@
-<mat-toolbar color="primary">
+<mat-toolbar color="primary" class="menu">
   <mat-toolbar-row>
     <button mat-button routerLink="/">Home</button>
     <button mat-button routerLink="/profile" *ngIf="isLoggedIn">Profile</button>
+    <button mat-button routerLink="/elections">Vote</button>
     <button mat-button routerLink="/auth" *ngIf="!isLoggedIn">Authenticate</button>
-    <button mat-button routerLink="/create-election" >Create election</button>
-    <button mat-button routerLink="/administrate-elections" >Administrate elections</button>
-    <button mat-button routerLink="/candidate" >Candidate</button>
+    <div id="admin" *ngIf="isLoggedIn&&user.isAdmin">
+      <button mat-button routerLink="/create-election">Create election</button>
+      <button mat-button routerLink="/administrate-elections">Administrate elections</button>
+      <button mat-button routerLink="/candidate">Candidate</button>
+    </div>
     <button mat-button routerLink="/auth" *ngIf="isLoggedIn" (click)="authService.signOut()">Sign out</button>
 
   </mat-toolbar-row>

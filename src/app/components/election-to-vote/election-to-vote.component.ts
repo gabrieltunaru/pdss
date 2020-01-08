@@ -1,16 +1,16 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Election} from '../../models/Election';
-import {ElectionsService} from '../../services/elections.service';
-import {Router} from '@angular/router';
 import {User} from '../../models/User';
+import {ElectionsService} from '../../services/elections.service';
 import {AuthService} from '../../services/core/auth.service';
+import {Router} from '@angular/router';
 
 @Component({
-  selector: 'app-election',
-  templateUrl: './election.component.html',
-  styleUrls: ['./election.component.scss']
+  selector: 'app-election-to-vote',
+  templateUrl: './election-to-vote.component.html',
+  styleUrls: ['./election-to-vote.component.scss']
 })
-export class ElectionComponent implements OnInit {
+export class ElectionToVoteComponent implements OnInit {
 
   @Input() election: Election;
   @Input() user: User;
@@ -40,6 +40,5 @@ export class ElectionComponent implements OnInit {
     this.electionsService.addUserToElection(this.user, this.election);
     this.isAlreadyCandidate = true;
   }
-
 
 }

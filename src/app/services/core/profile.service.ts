@@ -30,16 +30,18 @@ export class ProfileService {
     );
   }
 
-  public updateUserData(user) {
+  public updateUserData(user: User) {
     const userRef: AngularFirestoreDocument<any> = this.fireStore.doc(`users/${user.uid}`);
 
     const data: User = {
-      uid: user.uid,
-      email: user.email,
-      displayName: user.displayName,
-      photoURL: user.photoURL,
-      isAdmin: user.isAdmin || false
-    };
+        uid: user.uid,
+        email: user.email,
+        displayName: user.displayName,
+        photoURL: user.photoURL,
+        isAdmin: user.isAdmin || false,
+        electionsVotedIn: user.electionsVotedIn || []
+      }
+    ;
     return userRef.set(data, {merge: true});
 
   }

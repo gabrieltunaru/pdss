@@ -1,0 +1,13 @@
+<div fxLayout="column wrap" fxLayoutAlign="center center" fxLayoutGap="30px">
+  <h2>{{election.title}}</h2>
+  <p>{{election.description}}</p>
+  <div class="candidate" *ngFor="let candidate of election.candidates" >
+    <div fxLayout="row wrap" fxLayoutGap="10px" fxLayoutAlign="center center">
+      <img [src]="candidate.user.photoURL" class="image">
+      <div>
+        <h4>{{candidate.user.displayName}}</h4>
+        <button mat-raised-button color="primary" (click)="vote(candidate)" [disabled]="alreadyVoted">Vote</button>
+      </div>
+    </div>
+  </div>
+</div>

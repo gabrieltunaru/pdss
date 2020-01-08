@@ -4,6 +4,9 @@ import {FirebaseListObservable} from '@angular/fire/database-deprecated';
 import {Election} from '../models/Election';
 import {AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument} from '@angular/fire/firestore';
 import {User} from '../models/User';
+import {Observable} from 'rxjs';
+import {AuthService} from './core/auth.service';
+import {ProfileService} from './core/profile.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +15,7 @@ export class ElectionsService {
   elections: AngularFirestoreCollection<Election>;
   private electionDoc: AngularFirestoreDocument<Election>;
 
-  constructor(private db: AngularFirestore) {
+  constructor(private db: AngularFirestore, private authService: AuthService, private profileService: ProfileService) {
     this.elections = db.collection<Election>('/elections');
   }
 
@@ -32,6 +35,24 @@ export class ElectionsService {
   public addUserToElection(user: User, election: Election) {
     election.candidates.push({user, votes: 0});
     this.elections.doc(election.id).update(({candidates: election.candidates}));
+  }
+
+  public getElection(id: string) {
+    return new Observable(subscriber =>
+      this.db.doc(`elections/${id}`).get().subscribe(ss => {
+        subscriber.next({...ss.data(), id: ss.id});
+        subscriber.complete();
+      }));
+  }
+
+  public vote(election: Election) {
+    this.elections.doc(election.id).update({candidates: election.candidates});
+    this.authService.getCurrentUser().subscribe(ss => {
+      const user = ss.data() as User;
+      console.log('user',user);
+      user.electionsVotedIn.push(election.id);
+      this.profileService.updateUserData(user);
+    });
   }
 
 }
