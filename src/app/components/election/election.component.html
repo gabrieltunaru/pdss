@@ -12,6 +12,6 @@
             [color]="election.isActive? 'warn':'primary'">{{election.isActive ? "Close" : "Open"}}
       election
     </button>
-    <button mat-raised-button (click)="this.candidate()" *ngIf="isComponentCandidate && !isAlreadyCandidate" color="primary">Candidate</button>
+    <button mat-raised-button (click)="this.candidate()" *ngIf="isComponentCandidate && !isAlreadyCandidate " [disabled]="!user.displayName" color="primary">Candidate</button>
   </mat-card-footer>
 </mat-card>
