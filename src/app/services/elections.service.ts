@@ -66,7 +66,6 @@ export class ElectionsService {
     this.elections.doc(election.id).update(changes);
     this.authService.getCurrentUser().subscribe(ss => {
       const user = ss.data() as User;
-      console.log('user', user);
       user.electionsVotedIn.push(election.id);
       this.profileService.updateUserData(user);
     });

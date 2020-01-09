@@ -32,28 +32,27 @@ export class ProfileService {
 
   public updateUserData(user: User) {
     const userRef: AngularFirestoreDocument<any> = this.fireStore.doc(`users/${user.uid}`);
-
     const data: User = {
-        uid: user.uid,
-        email: user.email,
-        displayName: user.displayName,
-        photoURL: user.photoURL,
-        isAdmin: user.isAdmin || false,
-        electionsVotedIn: user.electionsVotedIn || []
-      }
-    ;
+      uid: user.uid,
+      email: user.email,
+      displayName: user.displayName,
+      photoURL: user.photoURL,
+      isAdmin: user.isAdmin || false,
+      electionsVotedIn: user.electionsVotedIn || []
+    };
     return userRef.set(data, {merge: true});
 
   }
 
-  public updateIfExists(user) {
+  public updateIfExists(user, forceUpdate?: boolean) {
     localStorage.setItem('user', user.uid);
     const userRef: AngularFirestoreDocument<any> = this.fireStore.doc(`users/${user.uid}`);
     userRef.get().subscribe(data => {
-      if (!data.exists) {
+      if (!data.exists || forceUpdate) {
         this.updateUserData(user);
       }
-      window.location.reload();
+      this.router.navigate(['']);
+      // window.location.reload();
     });
   }
 }

@@ -1,16 +1,16 @@
 <div fxLayout="column wrap" fxLayoutAlign="center center" fxLayoutGap="30px">
   <h2>{{election.title}}</h2>
   <p>{{election.description}}</p>
-  <div *ngIf="!election.isReferendum">
+  <div *ngIf="!election.isReferendum" fxLayout="column" fxLayoutGap="10px">
     <div class="candidate" *ngFor="let candidate of election.candidates">
-      <div fxLayout="row wrap" fxLayoutGap="10px" fxLayoutAlign="center center">
+      <div fxLayout="row column" fxLayoutGap="10px 10px" fxLayoutAlign="start center">
         <img [src]="candidate.user.photoURL" class="image">
         <div>
           <h4>{{candidate.user.displayName}}</h4>
           <button mat-raised-button color="primary" (click)="vote(candidate)" [disabled]="alreadyVoted" *ngIf="!election.isClosed">
             Vote
           </button>
-          <div *ngIf="election.isClosed">{{candidate.votes/totalVotes*100}}%</div>
+          <div *ngIf="election.isClosed">{{(candidate.votes/totalVotes*100).toFixed(2)}}%</div>
         </div>
       </div>
     </div>

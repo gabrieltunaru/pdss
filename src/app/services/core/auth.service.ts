@@ -25,8 +25,7 @@ export class AuthService {
   public signUp(email, password) {
     return this.fireAuth.auth.createUserWithEmailAndPassword(email, password)
       .then(result => {
-        this.profileService.updateIfExists(result.user);
-        this.router.navigate(['']);
+        this.signIn(email, password);
       })
       .catch(err => {
         console.error(err);
@@ -52,9 +51,10 @@ export class AuthService {
   public signIn(email, password) {
     return this.fireAuth.auth.signInWithEmailAndPassword(email, password)
       .then(result => {
-        this.profileService.updateIfExists(result.user);
+        this.profileService.updateIfExists(result.user, true);
         this.isLoggedIn = true;
-        this.router.navigate(['']);
+        setTimeout(() => window.location.reload(), 1000);
+
       })
       .catch(err => {
         console.error(err);
@@ -63,14 +63,13 @@ export class AuthService {
 
 
   public signOut() {
-    // const userRef: AngularFirestoreDocument<any> = this.fireStore.doc(`users/${user.uid}`);
 
     this.fireAuth.auth.signOut();
     this.isLoggedIn = false;
     localStorage.clear();
-    window.location.reload();
+    this.router.navigate(['auth']);
+    setTimeout(() => window.location.reload(), 1000);
 
-    // userRef.delete();
   }
 
   public getCurrentUser() {

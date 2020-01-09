@@ -21,14 +21,13 @@ export class ProfileComponent implements OnInit {
   task: AngularFireUploadTask;
   photoID: string;
   downloadURL: string;
-  currentData: User;
+  currentData = {} as User;
 
   constructor(private afStorage: AngularFireStorage, private fireStore: AngularFirestore, private userP: ProfileService) {
     const uid = localStorage.getItem('user');
     const userRef: AngularFirestoreDocument<any> = this.fireStore.doc(`users/${uid}`);
     userRef.get().subscribe(el => {
       this.currentData = el.data() as User;
-
     });
   }
 
@@ -72,6 +71,7 @@ export class ProfileComponent implements OnInit {
       this.userP.updateUserData(this.currentData);
     });
   }
+
   saveInfo() {
     this.userP.updateUserData(this.currentData);
   }

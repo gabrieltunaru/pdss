@@ -9,7 +9,7 @@ import {AuthService} from '../../services/core/auth.service';
 export class AuthComponent implements OnInit {
 
 
-  public useLoginComponent = false;
+  public useLoginComponent = true;
 
 
   constructor(public authService: AuthService) {
