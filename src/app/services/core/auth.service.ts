@@ -78,4 +78,8 @@ export class AuthService {
     const userRef: AngularFirestoreDocument<any> = this.fireStore.doc(`users/${uid}`);
     return userRef.get();
   }
+
+  getFirebaseUser() {
+    return this.fireAuth.user;
+  }
 }

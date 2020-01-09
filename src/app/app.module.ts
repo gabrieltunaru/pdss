@@ -37,6 +37,7 @@ import { ElectionsListPageComponent } from './pages/elections-list-page/election
 import { ElectionToVoteComponent } from './components/election-to-vote/election-to-vote.component';
 import { ElectionVoteComponent } from './pages/election-vote/election-vote.component';
 import { ResultsComponent } from './pages/results/results.component';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -78,6 +79,7 @@ import { ResultsComponent } from './pages/results/results.component';
     AngularFireStorageModule,
     MatSelectModule,
     MatSlideToggleModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

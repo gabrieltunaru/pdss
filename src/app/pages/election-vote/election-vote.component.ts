@@ -5,6 +5,7 @@ import {ElectionsService} from '../../services/elections.service';
 import {Candidate} from '../../models/Candidate';
 import {AuthService} from '../../services/core/auth.service';
 import {User} from '../../models/User';
+import {FunctionsService} from '../../services/functions.service';
 
 @Component({
   selector: 'app-election-vote',
@@ -16,12 +17,15 @@ export class ElectionVoteComponent implements OnInit {
   public election: Election = {} as Election;
   public alreadyVoted = false;
   public totalVotes = 0;
+  public user: User;
+  private userEmail: string;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
               private electionService: ElectionsService,
-              private authService: AuthService) {
-
+              private authService: AuthService,
+              private functions: FunctionsService) {
+    authService.getFirebaseUser().subscribe(user => this.userEmail = user.email);
     const id = this.route.snapshot.paramMap.get('id');
     this.electionService.getElection(id).subscribe(election => {
       this.election = election as Election;
@@ -31,6 +35,7 @@ export class ElectionVoteComponent implements OnInit {
       }
       this.authService.getCurrentUser().subscribe(ss => {
         const user = ss.data() as User;
+        this.user = user;
         if (user.electionsVotedIn) {
           this.alreadyVoted = !!user.electionsVotedIn.find(electionId => electionId === this.election.id);
         }
@@ -49,11 +54,13 @@ export class ElectionVoteComponent implements OnInit {
       }
     });
     this.electionService.vote(this.election);
+    this.functions.sendEmail(this.userEmail, 'You just voted', `You just voted on election ${this.election.title}`);
   }
 
   public voteReferendum(option) {
     this.election[option]++;
     this.electionService.vote(this.election);
+    this.alreadyVoted = true;
   }
 
 }
