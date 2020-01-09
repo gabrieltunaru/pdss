@@ -123,11 +123,7 @@ THE SOFTWARE.
 
 @angular/material/card
 
-@angular/material/core
-
 @angular/material/form-field
-
-@angular/material/select
 
 @angular/material/slide-toggle
 
