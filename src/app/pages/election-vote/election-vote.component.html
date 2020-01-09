@@ -15,8 +15,12 @@
       </div>
     </div>
   </div>
-  <div *ngIf="election.isReferendum" fxLayout="row wrap" fxLayoutGap="20px">
+  <div *ngIf="election.isReferendum&&!election.isClosed" fxLayout="row wrap" fxLayoutGap="20px">
     <button mat-raised-button color="primary" (click)="voteReferendum('yes')" [disabled]="alreadyVoted">Yes</button>
     <button mat-raised-button color="primary" (click)="voteReferendum('no')" [disabled]="alreadyVoted">No</button>
+  </div>
+  <div *ngIf="election.isClosed">
+    <div>{{(election.yes/(election.yes+election.no)*100).toFixed(2)}}% yes</div>
+    <div>{{(election.no/(election.yes+election.no)*100).toFixed(2)}}% no</div>
   </div>
 </div>

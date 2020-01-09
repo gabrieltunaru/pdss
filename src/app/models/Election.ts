@@ -3,8 +3,8 @@ import {Candidate} from './Candidate';
 export interface Election {
   id?: string;
   isReferendum?: boolean;
-  yes?: boolean;
-  no?: boolean;
+  yes?: number;
+  no?: number;
   title: string;
   description: string;
   candidates?: Candidate[];

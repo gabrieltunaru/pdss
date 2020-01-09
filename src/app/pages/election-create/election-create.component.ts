@@ -10,7 +10,7 @@ import {User} from '../../models/User';
 })
 export class ElectionCreateComponent implements OnInit {
 
-  public election = {type: 'election', title: '', description: '', isReferendum: false};
+  public election = {type: 'election', title: '', description: '', isReferendum: false, yes: 0, no: 0};
 
   constructor(private electionsService: ElectionsService) {
   }
