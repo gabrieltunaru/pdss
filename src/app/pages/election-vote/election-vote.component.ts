@@ -55,11 +55,13 @@ export class ElectionVoteComponent implements OnInit {
     });
     this.electionService.vote(this.election);
     this.functions.sendEmail(this.userEmail, 'You just voted', `You just voted on election ${this.election.title}`);
+    this.alreadyVoted = true;
   }
 
   public voteReferendum(option) {
     this.election[option]++;
     this.electionService.vote(this.election);
+    this.functions.sendEmail(this.userEmail, 'You just voted', `You just voted on election ${this.election.title}`);
     this.alreadyVoted = true;
   }
 
